@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView mTextView;
-    EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button1) {
-            mTextView.setText(mTextView.getText().toString());
-        } else if (v.getId() == R.id.button3) {
             showTimePickerDialog();
-        }
     }
 
     public void showTimePickerDialog() {
