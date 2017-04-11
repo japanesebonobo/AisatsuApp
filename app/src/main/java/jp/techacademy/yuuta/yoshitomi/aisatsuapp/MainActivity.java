@@ -3,14 +3,11 @@ package jp.techacademy.yuuta.yoshitomi.aisatsuapp;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
-import static android.R.attr.value;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,16 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v, int Hour, int Minute) {
-        onTimeSet();
+    public void onClick(View v) {
         if (v.getId() == R.id.button1) {
-            if ((Hour > 1) || (Hour < 10)) {
-                mTextView.setText("おはよう");
-            } else if ((Hour >= 10) || (Hour < 18)) {
-                mTextView.setText("こんにちは");
-            } else if ((Hour >= 18) || (Hour < 2)) {
-                mTextView.setText("こんばんは");
-            }
+            mTextView.setText(mEditText.getText().toString());
         } else if (v.getId() == R.id.button3) {
             showTimePickerDialog();
         }
@@ -53,7 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Log.d("UI-PARTS", String.valueOf(hourOfDay) + ":" + String.valueOf(minute));
+                        if ((hourOfDay > 1) || (hourOfDay < 10)) {
+                            mTextView.setText("おはよう");
+                        } else if ((hourOfDay >= 10) || (hourOfDay < 18)) {
+                            mTextView.setText("こんにちは");
+                        } else if ((hourOfDay >= 18) || (hourOfDay < 2)) {
+                            mTextView.setText("こんばんは");
+                        }
+
                     }
                 },
                 13, // 初期値（時間）
